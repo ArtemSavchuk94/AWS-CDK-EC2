@@ -1,6 +1,7 @@
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as cdk from 'aws-cdk-lib';
+import {readFileSync} from 'fs';
 
 
 export class HelloCdkStack extends cdk.Stack {
@@ -72,5 +73,7 @@ export class HelloCdkStack extends cdk.Stack {
       //keyName: 'ec2-key-pair',
     });
 
+    const userDataScript = readFileSync('./lib/user-data.sh', 'utf8');
+    ec2Instance.addUserData(userDataScript);
   }
 }
