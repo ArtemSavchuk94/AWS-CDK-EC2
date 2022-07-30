@@ -50,7 +50,7 @@ export class HelloCdkStack extends cdk.Stack {
     const webserverRole = new iam.Role(this, 'webserver-role', {
       assumedBy: new iam.ServicePrincipal('ec2.amazonaws.com'),
       managedPolicies: [
-        iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonEC2FullAccess'),
+        iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore'),
       ],
     });
 
